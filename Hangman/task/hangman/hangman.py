@@ -31,12 +31,6 @@ while menu == "play":
             print('It is not an ASCII lowercase letter')
             continue
 
-        # if the modified dashes matches guess then player wins
-        if ''.join(dashes_list) == guess:
-            print('You guessed the word!')
-            print('You survived!')
-            break
-
         if guess in word_list or guess in word_set:
             # checking if the letter is already guessed
             if guess in word_set:
@@ -48,6 +42,12 @@ while menu == "play":
                     dashes_list[word_list.index(guess)] = word_list[word_list.index(guess)]
                     word_list[word_list.index(guess)] = ''
                     word_set.add(guess)
+                # if the modified dashes matches guess then player wins
+                if ''.join(dashes_list) == word:
+                    print(''.join(dashes_list))
+                    print('You guessed the word!')
+                    print('You survived!')
+                    break
         else:
             print('No such letter in the word')
             word_set.add(guess)
